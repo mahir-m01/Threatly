@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react";
+import Link from "next/link";
 import Logo from "../assets/images/logo.svg";
 import MenuIcon from "../assets/icons/menu.svg";
 import XIcon from "../assets/icons/x.svg";
@@ -31,7 +32,11 @@ export const Navbar = () => {
                         <a href="#" className="text-white/80 hover:text-white/100 transition">Features</a>
                         <a href="#" className="text-white/80 hover:text-white/100 transition">FAQs</a>
 
-                        <button className="bg-white py-2 px-4 rounded-lg">Get Started</button>
+                        <Link href="/sign-up">
+                            <button className="bg-white text-black py-2 px-4 rounded-lg font-medium cursor-pointer hover:bg-[#2167A1] hover:text-white transition-all">
+                                Get Started
+                            </button>
+                        </Link>
                     </nav>
                 </div>
             </div>
@@ -79,12 +84,14 @@ export const Navbar = () => {
                                     FAQs
                                 </a>
 
-                                <button
-                                    className="bg-white text-black py-3 px-4 rounded-lg font-medium mt-4 max-w-32 mx-auto"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    Get Started
-                                </button>
+                                <Link href="/sign-up" className="w-full flex justify-center">
+                                    <button
+                                        className="bg-white text-black py-3 px-4 rounded-lg font-medium mt-4 max-w-32 mx-auto cursor-pointer hover:bg-[#2167A1] hover:text-white transition-all"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        Get Started
+                                    </button>
+                                </Link>
                             </nav>
                         </div>
                     </div>
