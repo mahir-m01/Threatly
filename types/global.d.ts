@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 declare global {
     interface SignInFormData {
         email: string;
@@ -11,6 +13,11 @@ declare global {
         password: string;
         confirmPassword: string;
     }
+
+    var mongooseCache: {
+        connection: typeof mongoose | null;
+        promise: Promise<typeof mongoose> | null;
+    };
 }
 
 export {};

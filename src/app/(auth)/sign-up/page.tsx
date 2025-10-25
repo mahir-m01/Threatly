@@ -9,7 +9,7 @@ export default function SignUpPage() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitting }, 
+        formState: { errors, isSubmitting },
         watch
     } = useForm<SignUpFormData>({
         mode: "onBlur"
