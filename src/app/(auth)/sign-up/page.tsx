@@ -3,9 +3,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { signUp } from '@/lib/better-auth/client'
 
 
 export default function SignUpPage() {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -16,12 +20,27 @@ export default function SignUpPage() {
     })
 
     const onSubmit = async (data: SignUpFormData) => {
-        try{
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000))
-            console.log(data)
-        } catch(e){
-            console.error('Sign up error:', e)
+        try {
+            // Sign up with Better Auth
+            const result = await signUp.email({
+                email: data.email,
+                password: data.password,
+                name: data.name,
+            });
+
+            if (result.error) {
+                toast.error(result.error.message || 'Failed to create account');
+                return;
+            }
+
+            // Show success toast
+            toast.success('Account created successfully!');
+
+            // Redirect to dashboard
+            router.push('/dashboard');
+        } catch (e) {
+            console.error('Sign up error:', e);
+            toast.error('Failed to create account. Please try again.');
         }
     }
 

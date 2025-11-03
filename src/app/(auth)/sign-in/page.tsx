@@ -3,9 +3,13 @@
 import React from 'react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
+import { signIn } from '@/lib/better-auth/client'
 
 
 export default function SignInPage() {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -16,11 +20,25 @@ export default function SignInPage() {
 
     const onSubmit = async (data: SignInFormData) => {
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000))
-            console.log('Sign in with:', data)
+            // Sign in with Better Auth
+            const result = await signIn.email({
+                email: data.email,
+                password: data.password,
+            });
+
+            if (result.error) {
+                toast.error(result.error.message || 'Failed to sign in');
+                return;
+            }
+
+            // Show success toast
+            toast.success('Signed in successfully!');
+
+            // Redirect to dashboard
+            router.push('/dashboard');
         } catch (e) {
-            console.error('Sign in error:', e)
+            console.error('Sign in error:', e);
+            toast.error('Failed to sign in. Please try again.');
         }
     }
 

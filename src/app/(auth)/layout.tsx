@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Logo from '@/assets/images/logo.svg'
+import { Toaster } from '@/components/ui/sonner'
 
 export default function AuthLayout({
     children,
@@ -25,7 +26,7 @@ export default function AuthLayout({
                     {children}
                 </div>
             </div>
+            <Toaster />
         </div>
     )
 }
-
