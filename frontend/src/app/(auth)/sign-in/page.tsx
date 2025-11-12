@@ -6,6 +6,11 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
 
+interface SignInFormData {
+    email: string
+    password: string
+}
+
 export default function SignInPage() {
     const router = useRouter()
     const {
