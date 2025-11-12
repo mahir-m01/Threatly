@@ -2,6 +2,7 @@
   "name": "threatly",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "packageManager": "npm@10.2.0",
   "description": "Threatly - Security threat intelligence platform",
   "scripts": {
