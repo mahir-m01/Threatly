@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
                 source: "/ingest/:path*",
                 destination: "https://us.i.posthog.com/:path*",
             },
+            // Rewrite API calls to the serverless backend API routes
+            {
+                source: "/api/:path*",
+                destination: "/api/:path*",
+            },
         ];
     },
 
