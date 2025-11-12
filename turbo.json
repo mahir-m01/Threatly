@@ -3,13 +3,15 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
       "cache": true
     },
     "dev": {
       "cache": false,
       "persistent": true
     }
-  }
+  },
+  "globalDependencies": ["tsconfig.json"],
+  "globalEnv": ["NODE_ENV"]
 }
 
