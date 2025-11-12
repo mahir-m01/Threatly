@@ -2,10 +2,10 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-    outputFileTracingRoot: path.join(__dirname, ".."),
-
-    // Enable Turbopack explicitly (Next.js 16 default)
-    turbopack: {},
+    // Configure Turbopack for monorepo with absolute path
+    turbopack: {
+        root: path.resolve(__dirname, ".."),
+    },
 
     async rewrites() {
         return [

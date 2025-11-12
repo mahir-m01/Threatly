@@ -1,0 +1,8 @@
+backend/
+.turbo/
+*.log
+.git/
+.gitignore
+README.md
+node_modules/
+frontend/.next/cache/
