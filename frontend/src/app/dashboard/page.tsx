@@ -34,7 +34,7 @@ const DashboardPage: FC = () => {
                 
                 console.log('🔍 Using API URL:', apiUrl);
                 
-                const response = await axios.get(`${apiUrl}/auth/profile`, {
+                const response = await axios.get(`${apiUrl}/api/auth/profile`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

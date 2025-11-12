@@ -28,7 +28,7 @@ const SignInPage: FC = () => {
             // Use environment variable for backend URL
             const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
-            const response = await axios.post(`${apiUrl}/auth/login`, {
+            const response = await axios.post(`${apiUrl}/api/auth/login`, {
                 email: data.email,
                 password: data.password
             })

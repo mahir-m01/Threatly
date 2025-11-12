@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
+// Health check endpoint (before CORS, publicly accessible)
+app.get('/api/health', (req: Request, res: Response) => {
+  res.json({ status: 'OK', message: 'Backend is running' });
+});
+
 // CORS configuration - allow requests from frontend
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 app.use(cors({
@@ -17,16 +22,12 @@ app.use(cors({
   credentials: true
 }));
 
-app.use('/auth', authRoutes);
-
-app.get('/health', (req: Request, res: Response) => {
-  res.json({ status: 'OK', message: 'Backend is running' });
-});
+app.use('/api/auth', authRoutes);
 
 // For Render deployment
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
-  console.log(`✅ CORS enabled for: ${FRONTEND_URL}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`CORS enabled for: ${FRONTEND_URL}`);
 });
 
 export default app;

@@ -32,7 +32,7 @@ const SignUpPage: FC = () => {
             // Use environment variable for backend URL
             const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
-            const response = await axios.post(`${apiUrl}/auth/sign-up`, {
+            const response = await axios.post(`${apiUrl}/api/auth/sign-up`, {
                 name: data.name,
                 email: data.email,
                 password: data.password
