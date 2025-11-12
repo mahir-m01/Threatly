@@ -27,7 +27,7 @@ const DashboardPage: FC = () => {
                     router.push('/sign-in')
                     return
                 }
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/auth/profile`, {
+                const response = await axios.get(`/api/auth/profile`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'

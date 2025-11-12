@@ -24,7 +24,7 @@ const SignInPage: FC = () => {
 
     const onSubmit = async (data: SignInFormData) => {
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/auth/login`, {
+            const response = await axios.post(`/api/auth/login`, {
                 email: data.email,
                 password: data.password
             })

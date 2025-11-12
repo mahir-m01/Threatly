@@ -1,22 +1,19 @@
 
+
 > threatly-frontend@0.1.0 build
 > next build
 
-   ▲ Next.js 16.0.1 (Turbopack)
+[1G[0K   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
    - Environments: .env.local, .env
 
-   Creating an optimized production build ...
- ✓ Compiled successfully in 1335.4ms
-   Running TypeScript ...
-   Collecting page data ...
-   Generating static pages (0/6) ...
-   Generating static pages (1/6) 
-   Generating static pages (2/6) 
-   Generating static pages (4/6) 
- ✓ Generating static pages (6/6) in 228.0ms
-   Finalizing page optimization ...
+ [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully in 1572.9ms
+[?25l [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[?25h[?25l [37m[1m [22m[39m Finished TypeScript in 1085.3ms  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finished TypeScript in 1085.3ms     [32m[1m✓[22m[39m Finished TypeScript in 1085.3ms 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data in 178.0ms     [32m[1m✓[22m[39m Collecting page data in 178.0ms 
+[?25l [37m[1m [22m[39m Generating static pages (0/6)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/6)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (6/6) in 242.2ms
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization in 6.0ms     [32m[1m✓[22m[39m Finalizing page optimization in 6.0ms 
 
-Route (app)
+[4mRoute (app)[24m
 ┌ ○ /
 ├ ○ /_not-found
 ├ ○ /dashboard
@@ -26,3 +23,4 @@ Route (app)
 
 ○  (Static)  prerendered as static content
 
+[?25h[1G[0K⠙[1G[0K

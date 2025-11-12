@@ -28,7 +28,7 @@ const SignUpPage: FC = () => {
 
     const onSubmit = async (data: SignUpFormData) => {
         try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/auth/sign-up`, {
+            const response = await axios.post(`/api/auth/sign-up`, {
                 name: data.name,
                 email: data.email,
                 password: data.password
