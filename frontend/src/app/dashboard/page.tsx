@@ -28,9 +28,14 @@ const DashboardPage: FC = () => {
                     return
                 }
                 console.log('🔵 Fetching user profile...');
-                const apiUrl = process.env.NODE_ENV === 'production'
-                    ? '/api/auth/profile'
-                    : 'http://localhost:4000/api/auth/profile';
+                const isLocalhost = typeof window !== 'undefined' && 
+                    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+                
+                const apiUrl = isLocalhost
+                    ? 'http://localhost:4000/api/auth/profile'
+                    : '/api/auth/profile';
+                
+                console.log('🔍 Using API URL:', apiUrl);
                 
                 const response = await axios.get(apiUrl, {
                     headers: {

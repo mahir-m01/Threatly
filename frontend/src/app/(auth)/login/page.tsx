@@ -25,12 +25,10 @@ const SignInPage: FC = () => {
     const onSubmit = async (data: SignInFormData) => {
         try {
             console.log('🔵 Attempting login...');
-            // In production (Vercel), use relative path. In dev, use localhost:4000
-            const apiUrl = process.env.NODE_ENV === 'production' 
-                ? '/api/auth/login' 
-                : 'http://localhost:4000/api/auth/login';
+            // Use env var if set, otherwise default to /api for production
+            const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '/api';
             
-            const response = await axios.post(apiUrl, {
+            const response = await axios.post(`${apiUrl}/auth/login`, {
                 email: data.email,
                 password: data.password
             })
