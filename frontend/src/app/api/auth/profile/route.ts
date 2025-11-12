@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
+    const backendUrl = process.env.BACKEND_URL || 'http://localhost:4000';
     
     const response = await fetch(`${backendUrl}/api/auth/profile`, {
       method: 'GET',
