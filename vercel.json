@@ -1,4 +1,5 @@
 {
   "buildCommand": "turbo run build",
-  "devCommand": "turbo run dev --parallel"
+  "devCommand": "turbo run dev --parallel",
+  "ignoreBuildStep": "npx turbo-ignore"
 }
