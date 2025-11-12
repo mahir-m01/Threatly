@@ -13,9 +13,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       cachedApp = app;
     }
     
-    // Call Express app as a function with req and res
-    // This is the standard way to use Express in serverless
-    return cachedApp(req, res);
+    // Express apps in newer versions need to be called with a callback
+    // This ensures the request is fully processed before returning
+    await new Promise<void>((resolve, reject) => {
+      cachedApp(req, res, (err: any) => {
+        if (err) {
+          console.error('Express error:', err);
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+      
+      // Also resolve when response finishes
+      res.on('finish', () => resolve());
+    });
   } catch (error) {
     console.error('Error loading backend:', error);
     if (!res.headersSent) {
