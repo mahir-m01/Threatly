@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "turbo run build",
+  "buildCommand": "npm install && turbo run build",
   "ignoreCommand": "npx turbo-ignore --fallback=HEAD^1"
 }
