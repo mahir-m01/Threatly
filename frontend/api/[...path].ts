@@ -5,7 +5,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // @ts-ignore - ESM import
     const { default: app } = await import('../../backend/dist/index.js');
-    return app(req, res);
+    
+    // Express app needs to be invoked as middleware
+    // Pass the request and response to Express
+    await new Promise((resolve, reject) => {
+      app(req, res);
+      res.on('finish', resolve);
+      res.on('error', reject);
+    });
   } catch (error) {
     console.error('Error loading backend:', error);
     return res.status(500).json({ 
