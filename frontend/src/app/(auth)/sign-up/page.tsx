@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
+import { FC } from 'react'
 
 interface SignUpFormData {
     name: string
@@ -13,7 +14,7 @@ interface SignUpFormData {
     confirmPassword: string
 }
 
-export default function SignUpPage() {
+const SignUpPage: FC = () => {
     const router = useRouter()
     const {
         register,
@@ -188,3 +189,4 @@ export default function SignUpPage() {
     )
 }
 
+export default SignUpPage

@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Logo from '@/assets/images/logo.svg'
+import Image from 'next/image'
 import { Toaster } from '@/components/ui/sonner'
 
 export default function AuthLayout({
@@ -14,7 +14,7 @@ export default function AuthLayout({
             <div className="sticky top-0 z-10">
                 <div className="px-4 py-4 flex justify-center">
                     <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                        <Logo className="h-12 w-12 relative" />
+                        <Image src="/logo.svg" alt="Threatly Logo" width={48} height={48} className="h-12 w-12 relative" />
                         <h1 className="text-white text-2xl font-medium">Threatly</h1>
                     </Link>
                 </div>

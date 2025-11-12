@@ -1,0 +1,28 @@
+
+> threatly-frontend@0.1.0 build
+> next build
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1335.4ms
+   Running TypeScript ...
+   Collecting page data ...
+   Generating static pages (0/6) ...
+   Generating static pages (1/6) 
+   Generating static pages (2/6) 
+   Generating static pages (4/6) 
+ ✓ Generating static pages (6/6) in 228.0ms
+   Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /dashboard
+├ ○ /sign-in
+└ ○ /sign-up
+
+
+○  (Static)  prerendered as static content
+

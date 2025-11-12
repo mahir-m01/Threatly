@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
-import Logo from "../assets/images/logo.svg";
-import MenuIcon from "../assets/icons/menu.svg";
-import XIcon from "../assets/icons/x.svg";
+import Image from "next/image";
+import { MenuIcon } from "./icons/MenuIcon";
+import { XIcon } from "./icons/XIcon";
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ export const Navbar = () => {
             <div className="px-4">
                 <div className="py-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <Logo className="h-12 w-12 relative" />
+                        <Image src="/logo.svg" alt="Logo" width={48} height={48} className="h-12 w-12 relative" />
                         <h1 className="text-white text-2xl font-medium">Threatly</h1>
                     </div>
                     <button

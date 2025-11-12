@@ -5,13 +5,14 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
+import { FC } from 'react'
 
 interface SignInFormData {
     email: string
     password: string
 }
 
-export default function SignInPage() {
+const SignInPage: FC = () => {
     const router = useRouter()
     const {
         register,
@@ -154,3 +155,4 @@ export default function SignInPage() {
     )
 }
 
+export default SignInPage

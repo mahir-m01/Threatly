@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
-import PlusIcon from '../assets/icons/plus.svg'
-import MinusIcon from '../assets/icons/minus.svg'
+import { PlusIcon } from './icons/PlusIcon'
+import { MinusIcon } from './icons/MinusIcon'
 import clsx from 'clsx'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -35,7 +35,7 @@ const AccordianItem = ({question,answer} : {question:string,answer:string}) => {
         <div key={question} className="py-7 border-b border-white/30" onClick={()=> setIsOpen(!isOpen)}>
             <div className="flex items-center">
                 <span className="flex-1 text-lg font-bold" >{question}</span>
-                {isOpen ? <MinusIcon /> : <PlusIcon />}
+                {isOpen ? <MinusIcon className="text-white w-6 h-6" /> : <PlusIcon className="text-white w-6 h-6" />}
             </div>
             <AnimatePresence>
                 {isOpen && (

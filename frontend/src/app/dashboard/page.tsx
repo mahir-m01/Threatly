@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
+import { FC } from 'react'
 
 interface UserData {
     id: string
@@ -11,7 +12,7 @@ interface UserData {
     name: string
 }
 
-export default function DashboardPage() {
+const DashboardPage: FC = () => {
     const router = useRouter()
     const [user, setUser] = useState<UserData | null>(null)
     const [loading, setLoading] = useState(true)
@@ -95,3 +96,5 @@ export default function DashboardPage() {
         </div>
     )
 }
+
+export default DashboardPage

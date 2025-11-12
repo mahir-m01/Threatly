@@ -1,15 +1,17 @@
 "use client"
 import React from 'react'
 import Image from "next/image";
-import NextLogo from '../assets/images/nextjs.svg';
-import GeminiLogo from '../assets/images/gemini.svg';
-import reactLogo from '../assets/images/react.png';
-import TailwindLogo from '../assets/images/tailwind.svg';
-import TypescriptLogo from '../assets/images/typescript.svg';
 import {motion} from 'framer-motion';
 
 
 export const LogoTicker = () => {
+    const logos = [
+        { src: '/nextjs.svg', alt: 'Next.js' },
+        { src: '/gemini.svg', alt: 'Gemini' },
+        { src: '/typescript.svg', alt: 'TypeScript' },
+        { src: '/tailwind.svg', alt: 'Tailwind' },
+    ];
+
     return (
         <div className="bg-black text-white py-[72px] sm:py-24">
             <div className="container">
@@ -23,27 +25,21 @@ export const LogoTicker = () => {
                         transition={{duration: 10, repeat: Infinity, ease: "linear"}}
 
                         className="flex gap-16 flex-none pr-16">
-
-                        <NextLogo className="flex-none h-8 w-auto"/>
-                        <GeminiLogo className="flex-none h-8 w-auto"/>
-                        <Image src={reactLogo} alt="react logo" className="flex-none h-8 w-auto"/>
-                        <TypescriptLogo className="flex-none h-8 w-auto"/>
-                        <TailwindLogo className="flex-none h-8 w-auto"/>
-                        <NextLogo className="flex-none h-8 w-auto"/>
-                        <GeminiLogo className="flex-none h-8 w-auto"/>
-                        <Image src={reactLogo} alt="react logo" className="flex-none h-8 w-auto"/>
-                        <TypescriptLogo className="flex-none h-8 w-auto"/>
-                        <TailwindLogo className="flex-none h-8 w-auto"/>
-                        <NextLogo className="flex-none h-8 w-auto"/>
-                        <GeminiLogo className="flex-none h-8 w-auto"/>
-                        <Image src={reactLogo} alt="react logo" className="flex-none h-8 w-auto"/>
-                        <TypescriptLogo className="flex-none h-8 w-auto"/>
-                        <TailwindLogo className="flex-none h-8 w-auto"/>
-                        <NextLogo className="flex-none h-8 w-auto"/>
-                        <GeminiLogo className="flex-none h-8 w-auto"/>
-                        <Image src={reactLogo} alt="react logo" className="flex-none h-8 w-auto"/>
-                        <TypescriptLogo className="flex-none h-8 w-auto"/>
-                        <TailwindLogo className="flex-none h-8 w-auto"/>
+                        {/* Repeat logos 4 times for smooth scrolling */}
+                        {[...Array(4)].map((_, idx) => (
+                            <React.Fragment key={idx}>
+                                {logos.map((logo, logoIdx) => (
+                                    <Image
+                                        key={`${idx}-${logoIdx}`}
+                                        src={logo.src}
+                                        alt={logo.alt}
+                                        width={32}
+                                        height={32}
+                                        className="flex-none h-8 w-auto"
+                                    />
+                                ))}
+                            </React.Fragment>
+                        ))}
                     </motion.div>
                 </div>
             </div>

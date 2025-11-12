@@ -1,6 +1,6 @@
 import React from 'react'
-import InstaIcon from '../assets/icons/insta.svg'
-import XIcon from '../assets/icons/x.svg'
+import { InstaIcon } from './icons/InstaIcon'
+import { XIcon } from './icons/XIcon'
 
 export const Footer = () => {
     return (
@@ -12,10 +12,10 @@ export const Footer = () => {
                     </div>
                     <ul className="flex justify-center gap-2.5">
                         <li>
-                            <InstaIcon />
+                            <InstaIcon className="w-6 h-6 text-white/70 hover:text-white transition-colors" />
                         </li>
                         <li>
-                            <XIcon />
+                            <XIcon className="w-6 h-6 text-white/70 hover:text-white transition-colors" />
                         </li>
                     </ul>
                 </div>
