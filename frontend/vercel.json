@@ -3,8 +3,8 @@
   "installCommand": "cd .. && npm ci",
   "outputDirectory": ".next",
   "functions": {
-    "api/**/*.ts": {
-      "includeFiles": "../../backend/dist/**"
+    "api/[...path].ts": {
+      "includeFiles": "../backend/dist/**"
     }
   }
 }
