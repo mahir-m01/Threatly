@@ -24,7 +24,7 @@ const DashboardPage: FC = () => {
                 
                 if (!token) {
                     toast.error('No token found. Please login again.')
-                    router.push('/sign-in')
+                    router.push('/login')
                     return
                 }
                 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
@@ -41,12 +41,12 @@ const DashboardPage: FC = () => {
                     setUser(data.data)
                 } else {
                     toast.error('Failed to load user profile')
-                    router.push('/sign-in')
+                    router.push('/login')
                 }
             } catch (error: any) {
                 console.error('Error fetching profile:', error)
                 toast.error('Failed to load user profile')
-                router.push('/sign-in')
+                router.push('/login')
             } finally {
                 setLoading(false)
             }
@@ -58,7 +58,7 @@ const DashboardPage: FC = () => {
     const handleLogout = () => {
         localStorage.removeItem('token')
         toast.success('Logged out successfully')
-        router.push('/sign-in')
+        router.push('/login')
     }
 
     if (loading) {

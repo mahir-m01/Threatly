@@ -158,7 +158,7 @@ const SignUpPage: FC = () => {
                 <p className="text-white/70 text-xs">
                     Already have an account?{' '}
                     <Link
-                        href="/sign-in"
+                        href="/login"
                         className="text-white font-medium hover:text-[#6ea3DB] transition-colors"
                     >
                         Sign In

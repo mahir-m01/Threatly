@@ -88,11 +88,11 @@ const ForgotPasswordPage: FC = () => {
       <div className="mt-5 text-center">
         <p className="text-white/70 text-xs">
           Remember your password?{' '}
-          <Link
-            href="/sign-in"
-            className="text-white font-medium hover:text-[#6ea3DB] transition-colors"
+                    <Link
+            href="/login"
+            className="text-white/80 hover:text-white transition-colors text-sm"
           >
-            Sign In
+            ← Back to Login
           </Link>
         </p>
       </div>

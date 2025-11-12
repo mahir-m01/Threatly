@@ -1,6 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm ci",
-  "framework": null,
-  "outputDirectory": "frontend/.next"
+  "installCommand": "npm ci"
 }
