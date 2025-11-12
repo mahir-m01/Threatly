@@ -1,5 +1,10 @@
 {
   "buildCommand": "cd .. && turbo run build --filter=threatly-frontend",
   "installCommand": "cd .. && npm ci",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "functions": {
+    "api/**/*.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
