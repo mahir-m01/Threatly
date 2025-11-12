@@ -24,11 +24,18 @@ const SignInPage: FC = () => {
 
     const onSubmit = async (data: SignInFormData) => {
         try {
-            const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
-            const response = await axios.post(`${backendUrl}/api/auth/login`, {
+            console.log('🔵 Attempting login...');
+            // In production (Vercel), use relative path. In dev, use localhost:4000
+            const apiUrl = process.env.NODE_ENV === 'production' 
+                ? '/api/auth/login' 
+                : 'http://localhost:4000/api/auth/login';
+            
+            const response = await axios.post(apiUrl, {
                 email: data.email,
                 password: data.password
             })
+            
+            console.log('✅ Login response:', response.data);
             
             if (response.data.success) {
 
@@ -42,7 +49,8 @@ const SignInPage: FC = () => {
                 toast.error(response.data.message || 'Failed to log in')
             }
         } catch (error: any) {
-            console.error('Login error:', error);
+            console.error('❌ Login error:', error);
+            console.error('❌ Error response:', error.response?.data);
     
             const errorMessage = error.response?.data?.message || 'Failed to log in. Please try again.'
             toast.error(errorMessage)

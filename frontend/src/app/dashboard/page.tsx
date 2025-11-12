@@ -27,13 +27,19 @@ const DashboardPage: FC = () => {
                     router.push('/login')
                     return
                 }
-                const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
-                const response = await axios.get(`${backendUrl}/api/auth/profile`, {
+                console.log('🔵 Fetching user profile...');
+                const apiUrl = process.env.NODE_ENV === 'production'
+                    ? '/api/auth/profile'
+                    : 'http://localhost:4000/api/auth/profile';
+                
+                const response = await axios.get(apiUrl, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
+                
+                console.log('✅ Profile response:', response.data);
                 
                 const data = response.data
                 

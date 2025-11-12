@@ -28,12 +28,18 @@ const SignUpPage: FC = () => {
 
     const onSubmit = async (data: SignUpFormData) => {
         try {
-            const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
-            const response = await axios.post(`${backendUrl}/api/auth/sign-up`, {
+            console.log('🔵 Attempting sign up...');
+            const apiUrl = process.env.NODE_ENV === 'production'
+                ? '/api/auth/sign-up'
+                : 'http://localhost:4000/api/auth/sign-up';
+            
+            const response = await axios.post(apiUrl, {
                 name: data.name,
                 email: data.email,
                 password: data.password
             })
+            
+            console.log('✅ Sign up response:', response.data);
             
             if (response.data.success) {
 
