@@ -7,7 +7,8 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "prisma generate && tsc",
+    "build": "prisma generate && tsc && npm run postbuild",
+    "postbuild": "cp src/generated/*.node dist/generated/ 2>/dev/null || true",
     "postinstall": "prisma generate",
     "start": "node dist/index.js",
     "lint": "tsc --noEmit"

@@ -4,7 +4,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     // @ts-ignore - ESM import
-    const { default: app } = await import('../backend/dist/index.js');
+    const { default: app } = await import('../../backend/dist/index.js');
     return app(req, res);
   } catch (error) {
     console.error('Error loading backend:', error);

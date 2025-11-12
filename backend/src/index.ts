@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './auth/route.js';
 
-
 dotenv.config();
 
 const app: Express = express();
@@ -19,7 +18,6 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-
 app.use('/api/auth', authRoutes);
 
 app.get('/api/health', (req: Request, res: Response) => {
@@ -33,5 +31,5 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-// Export for Vercel serverless
+// Export for Vercel serverless - wrap Express app in a handler
 export default app;
