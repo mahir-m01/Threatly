@@ -28,9 +28,9 @@ export const Navbar = () => {
                         )}
                     </button>
                     <nav className="items-center gap-6 hidden sm:flex">
-                        <a href="#" className="text-white/80 hover:text-white/100 transition">About</a>
-                        <a href="#" className="text-white/80 hover:text-white/100 transition">Features</a>
-                        <a href="#" className="text-white/80 hover:text-white/100 transition">FAQs</a>
+                        <a href="#" className="text-white/80 hover:text-white transition">About</a>
+                        <a href="#" className="text-white/80 hover:text-white transition">Features</a>
+                        <a href="#" className="text-white/80 hover:text-white transition">FAQs</a>
 
                         <Link href="/sign-up">
                             <button className="bg-white text-black py-2 px-4 rounded-lg font-medium cursor-pointer hover:bg-[#2167A1] hover:text-white transition-all">
