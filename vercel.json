@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "turbo run build",
-  "ignoreCommand": "npx turbo-ignore --fallback=HEAD^1"
+  "buildCommand": "cd ../.. && npm run build:frontend",
+  "outputDirectory": "frontend/.next"
 }
