@@ -6,25 +6,27 @@ import authRoutes from './auth/route.js';
 dotenv.config();
 
 const app: Express = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
-// CORS configuration - allow all origins in production for Vercel
-app.use(cors());
+// CORS configuration - allow requests from frontend
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+app.use(cors({
+  origin: FRONTEND_URL,
+  credentials: true
+}));
 
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', message: 'Backend is running' });
 });
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
-}
+// For Render deployment
+app.listen(PORT, () => {
+  console.log(`✅ Server is running on http://localhost:${PORT}`);
+  console.log(`✅ CORS enabled for: ${FRONTEND_URL}`);
+});
 
-// Export for Vercel serverless - wrap Express app in a handler
 export default app;

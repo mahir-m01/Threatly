@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
-    // Configure Turbopack for monorepo with absolute path
-    turbopack: {
-        root: path.resolve(__dirname, ".."),
-    },
-
+    // Empty turbopack config to silence warning while using webpack
+    turbopack: {},
+    
     async rewrites() {
         return [
             {
@@ -16,11 +13,6 @@ const nextConfig: NextConfig = {
             {
                 source: "/ingest/:path*",
                 destination: "https://us.i.posthog.com/:path*",
-            },
-            // Rewrite API calls to the serverless backend API routes
-            {
-                source: "/api/:path*",
-                destination: "/api/:path*",
             },
         ];
     },

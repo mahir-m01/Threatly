@@ -25,8 +25,8 @@ const SignInPage: FC = () => {
     const onSubmit = async (data: SignInFormData) => {
         try {
             console.log('🔵 Attempting login...');
-            // Use env var if set, otherwise default to /api for production
-            const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '/api';
+            // Use environment variable for backend URL
+            const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
             const response = await axios.post(`${apiUrl}/auth/login`, {
                 email: data.email,

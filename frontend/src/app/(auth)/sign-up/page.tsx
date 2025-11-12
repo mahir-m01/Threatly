@@ -29,8 +29,8 @@ const SignUpPage: FC = () => {
     const onSubmit = async (data: SignUpFormData) => {
         try {
             console.log('🔵 Attempting sign up...');
-            // Use env var if set, otherwise default to /api for production
-            const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '/api';
+            // Use environment variable for backend URL
+            const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
             const response = await axios.post(`${apiUrl}/auth/sign-up`, {
                 name: data.name,
