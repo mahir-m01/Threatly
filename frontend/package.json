@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
-    "build": "next build",
+    "build": "npm run build --workspace=../backend && next build",
     "start": "next start",
     "lint": "eslint"
   },

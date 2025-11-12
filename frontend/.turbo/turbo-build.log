@@ -1,27 +1,38 @@
 
-
 > threatly-frontend@0.1.0 build
-> next build
+> npm run build --workspace=../backend && next build
 
-[1G[0K   [1m[38;2;173;127;168m▲ Next.js 16.0.1[39m[22m (Turbopack)
-   - Environments: .env.local, .env
 
- [37m[1m [22m[39m Creating an optimized production build ...
- [32m[1m✓[22m[39m Compiled successfully in 1138.2ms
-[?25l [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[?25h[?25l [37m[1m [22m[39m Finished TypeScript in 1055.2ms  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finished TypeScript in 1055.2ms     [32m[1m✓[22m[39m Finished TypeScript in 1055.2ms 
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data in 200.6ms     [32m[1m✓[22m[39m Collecting page data in 200.6ms 
-[?25l [37m[1m [22m[39m Generating static pages (0/7)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/7)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (7/7) in 231.4ms
-[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization in 5.1ms     [32m[1m✓[22m[39m Finalizing page optimization in 5.1ms 
+> threatly-backend@0.1.0 build
+> prisma generate && tsc
 
-[4mRoute (app)[24m
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (6.19.0) to ./src/generated in 31ms
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Environments: .env.local, .env.production, .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 1393.7ms
+   Running TypeScript ...
+   Collecting page data ...
+   Generating static pages (0/7) ...
+   Generating static pages (1/7) 
+   Generating static pages (3/7) 
+   Generating static pages (5/7) 
+ ✓ Generating static pages (7/7) in 258.8ms
+   Finalizing page optimization ...
+
+Route (app)
 ┌ ○ /
 ├ ○ /_not-found
 ├ ○ /dashboard
 ├ ○ /forgot-password
-├ ○ /sign-in
+├ ○ /login
 └ ○ /sign-up
 
 
 ○  (Static)  prerendered as static content
 
-[?25h[1G[0K⠙[1G[0K
