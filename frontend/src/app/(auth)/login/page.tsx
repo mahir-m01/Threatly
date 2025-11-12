@@ -102,15 +102,6 @@ const SignInPage: FC = () => {
                     )}
                 </div>
 
-                <div className="flex items-center justify-end text-xs">
-                    <Link
-                        href="/forgot-password"
-                        className="text-white/70 hover:text-white transition-colors"
-                    >
-                        Forgot password?
-                    </Link>
-                </div>
-
                 <button
                     type="submit"
                     disabled={isSubmitting}

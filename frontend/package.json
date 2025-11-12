@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:clean": "rm -rf .next && next dev",
-    "build": "npm run build --workspace=../backend && next build",
+    "prebuild": "npm run build --workspace=../backend",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -34,5 +35,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.0"
   }
 }
