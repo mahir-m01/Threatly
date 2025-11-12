@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createUser, loginUser, getUserById } from './service.ts';
+import { createUser, loginUser, getUserById } from './service.js';
 
 interface SignUpRequest extends Request {
   body: {
