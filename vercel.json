@@ -3,19 +3,5 @@
   "buildCommand": "turbo run build",
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "backend/dist/index.js": {
-      "runtime": "nodejs20.x",
-      "memory": 512,
-      "maxDuration": 30,
-      "handler": "index.default"
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/auth/:path*",
-      "destination": "/backend/dist/index.js"
-    }
-  ]
+  }
 }
