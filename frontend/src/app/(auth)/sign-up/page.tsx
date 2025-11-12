@@ -28,7 +28,8 @@ const SignUpPage: FC = () => {
 
     const onSubmit = async (data: SignUpFormData) => {
         try {
-            const response = await axios.post(`/api/auth/sign-up`, {
+            const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
+            const response = await axios.post(`${backendUrl}/api/auth/sign-up`, {
                 name: data.name,
                 email: data.email,
                 password: data.password

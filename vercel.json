@@ -1,12 +1,5 @@
 {
   "version": 2,
   "buildCommand": "turbo run build",
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "backend/dist/index.ts": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "ignoreCommand": "npx turbo-ignore --fallback=HEAD^1"
 }

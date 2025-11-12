@@ -7,16 +7,17 @@
    - Environments: .env.local, .env
 
  [37m[1m [22m[39m Creating an optimized production build ...
- [32m[1m✓[22m[39m Compiled successfully in 1572.9ms
-[?25l [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[?25h[?25l [37m[1m [22m[39m Finished TypeScript in 1085.3ms  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finished TypeScript in 1085.3ms     [32m[1m✓[22m[39m Finished TypeScript in 1085.3ms 
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data in 178.0ms     [32m[1m✓[22m[39m Collecting page data in 178.0ms 
-[?25l [37m[1m [22m[39m Generating static pages (0/6)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/6)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (6/6) in 242.2ms
-[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization in 6.0ms     [32m[1m✓[22m[39m Finalizing page optimization in 6.0ms 
+ [32m[1m✓[22m[39m Compiled successfully in 1138.2ms
+[?25l [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m.[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m..[39m[2K[1G [37m[1m [22m[39m Running TypeScript  [36m...[39m[2K[1G[?25h[?25l [37m[1m [22m[39m Finished TypeScript in 1055.2ms  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finished TypeScript in 1055.2ms     [32m[1m✓[22m[39m Finished TypeScript in 1055.2ms 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data in 200.6ms     [32m[1m✓[22m[39m Collecting page data in 200.6ms 
+[?25l [37m[1m [22m[39m Generating static pages (0/7)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/7)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (7/7) in 231.4ms
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization in 5.1ms     [32m[1m✓[22m[39m Finalizing page optimization in 5.1ms 
 
 [4mRoute (app)[24m
 ┌ ○ /
 ├ ○ /_not-found
 ├ ○ /dashboard
+├ ○ /forgot-password
 ├ ○ /sign-in
 └ ○ /sign-up
 
