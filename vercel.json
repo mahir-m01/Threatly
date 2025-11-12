@@ -8,7 +8,14 @@
     "backend/dist/index.js": {
       "runtime": "nodejs20.x",
       "memory": 512,
-      "maxDuration": 30
+      "maxDuration": 30,
+      "handler": "index.default"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/auth/:path*",
+      "destination": "/backend/dist/index.js"
+    }
+  ]
 }
