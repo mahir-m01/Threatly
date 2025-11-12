@@ -1,5 +1,4 @@
 {
-  "buildCommand": "npm run build:frontend",
-  "devCommand": "npm run dev:frontend",
-  "installCommand": "npm install"
+  "buildCommand": "turbo run build",
+  "devCommand": "turbo run dev --parallel"
 }
