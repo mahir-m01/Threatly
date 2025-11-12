@@ -2,6 +2,7 @@
   "version": 2,
   "buildCommand": "npm run build",
   "installCommand": "npm ci --legacy-peer-deps",
+  "outputDirectory": "frontend/.next",
   "env": {
     "NODE_ENV": "production"
   }
