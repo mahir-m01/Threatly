@@ -4,7 +4,11 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:4000';
+    // On Vercel, use the full domain. Locally use localhost:4000
+    const baseUrl = process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:4000';
+    const backendUrl = process.env.BACKEND_URL || baseUrl;
     
     const response = await fetch(`${backendUrl}/api/auth/sign-up`, {
       method: 'POST',
