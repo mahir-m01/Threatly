@@ -1,12 +1,12 @@
-import {Banner} from '@/components/Banner';
-import {Navbar} from "@/components/Navbar";
-import {Hero} from "@/components/Hero";
-import {LogoTicker} from "@/components/LogoTicker";
-import {Features} from "@/components/Features";
-import {ProductShowcase} from "@/components/ProductShowcase";
-import {FAQs} from "@/components/FAQs";
-import {CallToAction} from "@/components/CallToAction";
-import {Footer} from "@/components/Footer";
+import { Banner } from '@/components/landing-page/banner';
+import { Navbar } from "@/components/landing-page/navbar";
+import { Hero } from "@/components/landing-page/hero";
+import { LogoTicker } from "@/components/landing-page/logo-ticker";
+import { Features } from "@/components/landing-page/features";
+import { ProductShowcase } from "@/components/landing-page/product-showcase";
+import { FAQs } from "@/components/landing-page/faqs";
+import { CallToAction } from "@/components/landing-page/call-to-action";
+import { Footer } from "@/components/landing-page/footer";
 
 
 export default function Home(){

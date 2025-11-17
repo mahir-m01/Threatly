@@ -32,7 +32,7 @@ const createUser = async (name: string, email: string, password: string) => {
   }
 };
 
-const loginUser = async (email: string, password: string) => {
+const signInUser = async (email: string, password: string) => {
   try {
     const user = await prisma.users.findUnique({ where: { email } });
     if (!user) {
@@ -67,4 +67,4 @@ const getUserById = async (userId: string) => {
   }
 };
 
-export { createUser, loginUser, getUserById };
+export { createUser, signInUser, getUserById };

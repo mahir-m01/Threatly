@@ -1,6 +1,6 @@
 import React from 'react'
-import { InstaIcon } from './icons/InstaIcon'
-import { XIcon } from './icons/XIcon'
+import { InstaIcon } from '../icons/InstaIcon'
+import { XIcon } from '../icons/XIcon'
 
 export const Footer = () => {
     return (

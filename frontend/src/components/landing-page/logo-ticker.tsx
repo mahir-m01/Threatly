@@ -3,7 +3,6 @@ import React from 'react'
 import Image from "next/image";
 import {motion} from 'framer-motion';
 
-
 export const LogoTicker = () => {
     const logos = [
         { src: '/nextjs.svg', alt: 'Next.js' },

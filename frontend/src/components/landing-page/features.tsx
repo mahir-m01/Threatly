@@ -1,12 +1,12 @@
 import React from 'react';
-import {Feature} from "@/components/Feature";
+import { Feature } from "@/components/landing-page/feature";
 
-type Feature = {
+type FeatureType = {
     title: string;
     description: string;
 };
 
-const features: Feature[] = [
+const features: FeatureType[] = [
     {
         title: 'Unified Scans',
         description: 'Run multiple security checks at once. Headers, SSL/TLS, dependency vulnerabilities all in a single dashboard.',

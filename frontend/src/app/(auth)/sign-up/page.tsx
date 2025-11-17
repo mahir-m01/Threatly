@@ -28,7 +28,7 @@ const SignUpPage: FC = () => {
 
     const onSubmit = async (data: SignUpFormData) => {
         try {
-            console.log('🔵 Attempting sign up...');
+            console.log('Attempting sign up...');
             // Use environment variable for backend URL
             const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
@@ -38,7 +38,7 @@ const SignUpPage: FC = () => {
                 password: data.password
             })
             
-            console.log('✅ Sign up response:', response.data);
+            console.log('Sign up response:', response.data);
             
             if (response.data.success) {
 
@@ -153,7 +153,7 @@ const SignUpPage: FC = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-white/90 transition-all mt-5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-[#2167A1] hover:text-white transition-all mt-5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isSubmitting ? 'Signing Up...' : 'Sign Up'}
                 </button>
@@ -163,7 +163,7 @@ const SignUpPage: FC = () => {
                 <p className="text-white/70 text-xs">
                     Already have an account?{' '}
                     <Link
-                        href="/login"
+                        href="/sign-in"
                         className="text-white font-medium hover:text-[#6ea3DB] transition-colors"
                     >
                         Sign In

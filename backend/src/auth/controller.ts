@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createUser, loginUser, getUserById } from './service.js';
+import { createUser, signInUser, getUserById } from './service.js';
 
 interface SignUpRequest extends Request {
   body: {
@@ -22,10 +22,10 @@ interface AuthenticatedRequest extends Request {
   };
 }
 
-const login = async (req: SignInRequest, res: Response) => {
+const signIn = async (req: SignInRequest, res: Response) => {
   try {
     const { email, password } = req.body;
-    const result = await loginUser(email, password);
+    const result = await signInUser(email, password);
     res.json({ success: true, data: result });
   } catch (error: any) {
     res.status(401).json({ success: false, message: error.message });
@@ -54,4 +54,4 @@ const getProfile = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
-export { login, signup, getProfile };
+export { signIn, signup, getProfile };

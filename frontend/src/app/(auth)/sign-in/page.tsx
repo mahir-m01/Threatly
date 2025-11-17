@@ -24,33 +24,33 @@ const SignInPage: FC = () => {
 
     const onSubmit = async (data: SignInFormData) => {
         try {
-            console.log('🔵 Attempting login...');
+            console.log('Attempting sign in...');
             // Use environment variable for backend URL
             const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
-            const response = await axios.post(`${apiUrl}/api/auth/login`, {
+            const response = await axios.post(`${apiUrl}/api/auth/sign-in`, {
                 email: data.email,
                 password: data.password
             })
             
-            console.log('✅ Login response:', response.data);
+            console.log('Sign in response:', response.data);
             
             if (response.data.success) {
 
                 localStorage.setItem('token', response.data.data.token)
                 
-                toast.success('Logged in successfully!')
+                toast.success('Signed in successfully!')
                 
                 router.push('/dashboard')
             } else {
 
-                toast.error(response.data.message || 'Failed to log in')
+                toast.error(response.data.message || 'Failed to sign in')
             }
         } catch (error: any) {
-            console.error('❌ Login error:', error);
-            console.error('❌ Error response:', error.response?.data);
+            console.error('Sign in error:', error);
+            console.error('rror response:', error.response?.data);
     
-            const errorMessage = error.response?.data?.message || 'Failed to log in. Please try again.'
+            const errorMessage = error.response?.data?.message || 'Failed to sign in. Please try again.'
             toast.error(errorMessage)
         }
     }
@@ -111,7 +111,7 @@ const SignInPage: FC = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-white/90 transition-all mt-5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-white text-black py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-[#2167A1] hover:text-white transition-all mt-5 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isSubmitting ? 'Signing In...' : 'Sign In'}
                 </button>
