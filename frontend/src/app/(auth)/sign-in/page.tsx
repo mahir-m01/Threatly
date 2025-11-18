@@ -14,14 +14,7 @@ interface SignInFormData {
 
 const SignInPage: FC = () => {
     const router = useRouter()
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting }
-    } = useForm<SignInFormData>({
-        mode: "onBlur"
-    })
-    
+
     useEffect(() => {
         // If a token exists locally, redirect to dashboard.
         const token = localStorage.getItem('token')
@@ -30,7 +23,15 @@ const SignInPage: FC = () => {
         }
     }, [router])
 
-    
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting }
+    } = useForm<SignInFormData>({
+        mode: "onBlur"
+    })
+
+
     const onSubmit = async (data: SignInFormData) => {
         try {
             console.log('Attempting sign in...');

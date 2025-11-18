@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 interface SignUpFormData {
     name: string
@@ -16,6 +16,15 @@ interface SignUpFormData {
 
 const SignUpPage: FC = () => {
     const router = useRouter()
+
+    useEffect(() => {
+        // If a token exists locally, redirect to dashboard.
+        const token = localStorage.getItem('token')
+        if (token) {
+            router.replace('/dashboard')
+        }
+    }, [router])
+    
     const {
         register,
         handleSubmit,
