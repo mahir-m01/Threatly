@@ -32,7 +32,7 @@ const signIn = async (req: SignInRequest, res: Response) => {
   }
 };
 
-const signup = async (req: SignUpRequest, res: Response) => {
+const signUp = async (req: SignUpRequest, res: Response) => {
   try {
     const { name, email, password } = req.body;
     const result = await createUser(name, email, password);
@@ -54,4 +54,4 @@ const getProfile = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
-export { signIn, signup, getProfile };
+export { signIn, signUp, getProfile };

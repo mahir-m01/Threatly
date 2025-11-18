@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
-// Health check endpoint (before CORS, publicly accessible)
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', message: 'Backend is running' });
 });
