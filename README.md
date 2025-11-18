@@ -4,14 +4,14 @@ Small developers, startups, and open-source maintainers often lack accessible to
 
 **Threatly** aims to simplify this process through a full-stack dashboard that integrates multiple free security APIs and tools, allowing users to test their web apps or GitHub repositories and view consolidated reports in one place.
 
-## 📁 Project Structure
+## Project Structure
 
 This is a monorepo containing two separate applications:
 
-- **`frontend/`** - Next.js application (deployed on Vercel)
-- **`backend/`** - Express.js REST API (deployed on Render)
+- **`frontend/`** - Next.js application 
+- **`backend/`** - Express.js REST API 
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - Node.js 18+ 
@@ -42,32 +42,27 @@ npm run dev
 
 The frontend runs on `http://localhost:3000`
 
-## 🌐 Deployment
+## Deployment
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions on deploying to:
 - Frontend: Vercel
 - Backend: Render
 
-## 🔧 Tech Stack
+## Tech Stack
 
 ### Frontend
 - Next.js 16
 - React 19
 - TailwindCSS 4
 - TypeScript
+- Axios
 
 ### Backend
 - Express.js
 - Prisma (PostgreSQL)
 - JWT Authentication
 - TypeScript
+- Axios
 
-## 📝 Environment Variables
+## Environment Variables
 
 See `.env.example` files in both `frontend/` and `backend/` directories for required configuration.
-
-## 📖 Documentation
-
-- [Deployment Guide](./DEPLOYMENT.md) - Complete deployment instructions
-- [Frontend README](./frontend/README.md) - Frontend-specific documentation (if exists)
-- [Backend README](./backend/README.md) - Backend-specific documentation (if exists)

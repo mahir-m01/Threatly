@@ -1,8 +1,7 @@
 "use client"
 
-import React, {useRef} from 'react'
+import {useRef} from 'react'
 import Image from "next/image";
-import appScreen from "../../assets/images/app-screen.png"
 import {motion, useScroll, useTransform} from "framer-motion";
 
 export const ProductShowcase = () => {
@@ -24,7 +23,7 @@ export const ProductShowcase = () => {
                 </h2>
                 <div className="max-w-xl mx-auto">
                     <p className="text-xl text-center text-white/70 mt-5">
-                        Easily navigate scans, view detailed results, and track your project's security status with a clean, responsive dashboard designed for clarity and efficiency.
+                        Easily navigate scans, view detailed results, and track your project&apos;s security status with a clean, responsive dashboard designed for clarity and efficiency.
                     </p>
                 </div>
                 <motion.div
@@ -35,7 +34,7 @@ export const ProductShowcase = () => {
                     }}
 
                 >
-                    <Image src={appScreen} alt="Showcase Screenshot" className="mt-14 mx-auto" ref={appImage}
+                    <Image src="/showcase.png" alt="Showcase Screenshot" width={1200} height={800} className="mt-14 mx-auto" ref={appImage}
                     />
                 </motion.div>
 

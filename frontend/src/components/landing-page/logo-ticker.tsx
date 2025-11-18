@@ -9,6 +9,7 @@ export const LogoTicker = () => {
         { src: '/gemini.svg', alt: 'Gemini' },
         { src: '/typescript.svg', alt: 'TypeScript' },
         { src: '/tailwind.svg', alt: 'Tailwind' },
+        { src: '/react.svg', alt: 'React' }
     ];
 
     return (
@@ -24,7 +25,6 @@ export const LogoTicker = () => {
                         transition={{duration: 10, repeat: Infinity, ease: "linear"}}
 
                         className="flex gap-16 flex-none pr-16">
-                        {/* Repeat logos 4 times for smooth scrolling */}
                         {[...Array(4)].map((_, idx) => (
                             <React.Fragment key={idx}>
                                 {logos.map((logo, logoIdx) => (

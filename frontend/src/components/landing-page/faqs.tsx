@@ -2,7 +2,6 @@
 import React from 'react'
 import { PlusIcon } from '../icons/PlusIcon'
 import { MinusIcon } from '../icons/MinusIcon'
-import clsx from 'clsx'
 import { motion, AnimatePresence } from 'framer-motion'
 
 type FAQItem = {
@@ -12,22 +11,23 @@ type FAQItem = {
 
 const items: FAQItem[] = [
     {
-        question: "What payement methods do you accept?",
-        answer: "We accept all major credit cards, PayPal, and Apple Pay."
+        "question": "What does Threatly do with my scan data?",
+        "answer": "Threatly securely stores your scan results only for displaying your reports. No data is sold or shared with third parties."
     },
     {
-        question: "How long does shipping take?",
-        answer: "Shipping typically takes 5-7 business days."
+        "question": "Is my website information kept private?",
+        "answer": "Yes. All domains and scan results remain private to your account, and data is encrypted in transit and at rest."
     },
     {
-        question: "Can I return a product?",
-        answer: "Yes, we have a 30-day return policy for unused products."
+        "question": "Do Threatly scans harm my website?",
+        "answer": "No. Threatly uses safe and non-intrusive checks designed to avoid stressing or damaging your site. Scans follow industry-standard best practices."
     },
     {
-        question: "Is my data secure?",
-        answer: "We use industry-standard encryption to protect your data."
+        "question": "How accurate are Threatly's security checks?",
+        "answer": "Threatly aggregates results from trusted sources like Mozilla Observatory, SSL Labs, OSV, VirusTotal, and Nuclei to provide reliable, multi-layered security insights."
     }
 ]
+
 
 const AccordianItem = ({question,answer} : {question:string,answer:string}) => {
     const [isOpen,setIsOpen] = React.useState(false)

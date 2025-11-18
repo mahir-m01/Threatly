@@ -12,11 +12,11 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">Documents</h1>
+        <h1 className="text-base font-medium">Dashboard</h1>
         <div className="ml-auto flex items-center gap-2">
           <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
             <Link
-              href="https://threatly.com"
+              href="https://threatly.vercel.app"
               rel="noopener noreferrer"
               target="_blank"
               className="dark:text-foreground"
