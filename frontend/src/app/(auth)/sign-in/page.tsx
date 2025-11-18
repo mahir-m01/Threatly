@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import axios from 'axios'
-import { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 
 interface SignInFormData {
     email: string
@@ -21,6 +21,31 @@ const SignInPage: FC = () => {
     } = useForm<SignInFormData>({
         mode: "onBlur"
     })
+
+    useEffect(() => {
+        const checkExistingToken = async () => {
+            try {
+                const token = localStorage.getItem('token')
+                if (!token) return
+
+                const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
+
+                const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+                    headers: { Authorization: `Bearer ${token}` },
+                })
+
+                if (response.data?.success) {
+                    router.replace('/dashboard')
+                } else {
+                    localStorage.removeItem('token')
+                }
+            } catch (err) {
+                localStorage.removeItem('token')
+            }
+        }
+
+        checkExistingToken()
+    }, [router])
 
     const onSubmit = async (data: SignInFormData) => {
         try {
