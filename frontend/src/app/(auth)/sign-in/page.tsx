@@ -21,32 +21,16 @@ const SignInPage: FC = () => {
     } = useForm<SignInFormData>({
         mode: "onBlur"
     })
-
+    
     useEffect(() => {
-        const checkExistingToken = async () => {
-            try {
-                const token = localStorage.getItem('token')
-                if (!token) return
-
-                const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
-
-                const response = await axios.get(`${apiUrl}/api/auth/profile`, {
-                    headers: { Authorization: `Bearer ${token}` },
-                })
-
-                if (response.data?.success) {
-                    router.replace('/dashboard')
-                } else {
-                    localStorage.removeItem('token')
-                }
-            } catch (err) {
-                localStorage.removeItem('token')
-            }
+        // If a token exists locally, redirect to dashboard.
+        const token = localStorage.getItem('token')
+        if (token) {
+            router.replace('/dashboard')
         }
-
-        checkExistingToken()
     }, [router])
 
+    
     const onSubmit = async (data: SignInFormData) => {
         try {
             console.log('Attempting sign in...');
@@ -57,7 +41,6 @@ const SignInPage: FC = () => {
                 email: data.email,
                 password: data.password
             })
-            
             console.log('Sign in response:', response.data);
             
             if (response.data.success) {
