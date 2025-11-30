@@ -6,12 +6,12 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "prisma generate && tsc && npm run postbuild",
-    "postbuild": "cp src/generated/*.node dist/generated/ 2>/dev/null || true",
-    "postinstall": "prisma generate",
-    "start": "node dist/index.js",
-    "lint": "tsc --noEmit"
+  "dev": "tsx src/index.ts",
+  "build": "tsc && npm run postbuild",
+  "postbuild": "cp src/generated/*.node dist/generated/ 2>/dev/null || true",
+  "postinstall": "prisma generate",
+  "migrate:deploy": "prisma migrate deploy",
+  "start": "node dist/index.js"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",

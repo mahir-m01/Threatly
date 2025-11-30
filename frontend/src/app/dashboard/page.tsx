@@ -51,11 +51,14 @@ export default function Page() {
           setUser(response.data.data)
         } else {
           toast.error("Failed to load user profile")
+          localStorage.removeItem("token") 
           router.push("/sign-in")
         }
       } catch (error: any) {
         console.error("Error fetching profile:", error)
         toast.error("Failed to load user profile")
+        // Remove token if it's invalid/expired to prevent continuous redirects
+        localStorage.removeItem("token")
         router.push("/sign-in")
       } finally {
         setLoading(false)
