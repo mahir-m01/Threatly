@@ -30,7 +30,7 @@ const signIn = async (req: SignInRequest, res: Response) => {
     res.cookie('token', result.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'none',
       maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
       path: '/'
     });
@@ -52,7 +52,7 @@ const signUp = async (req: SignUpRequest, res: Response) => {
     res.cookie('token', result.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'none',
       maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
       path: '/'
     });
@@ -83,7 +83,7 @@ const signOut = async (req: Request, res: Response) => {
     res.clearCookie('token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'none',
       path: '/'
     });
     res.json({ success: true, message: 'Signed out successfully' });
