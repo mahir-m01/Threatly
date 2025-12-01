@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
+import axios from "axios"
 import {
   IconDotsVertical,
   IconLogout,
@@ -42,10 +43,22 @@ export function NavUser({
   const { isMobile } = useSidebar()
   const router = useRouter()
 
-  const handleSignOut = () => {
-    localStorage.removeItem("token")
-    toast.success("Signed out successfully")
-    router.push("/sign-in")
+  const handleSignOut = async () => {
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
+      await axios.post(
+        `${apiUrl}/api/auth/sign-out`,
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      toast.success("Signed out successfully")
+      router.push("/sign-in")
+    } catch (error) {
+      console.error("Sign out error:", error)
+      toast.error("Failed to sign out")
+    }
   }
 
   return (

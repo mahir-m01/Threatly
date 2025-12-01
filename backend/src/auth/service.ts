@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import prisma from '../lib/prisma.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'random_secret_key';
+const JWT_SECRET = process.env.JWT_SECRET || 'localkey';
 
 const createUser = async (name: string, email: string, password: string) => {
   try {
@@ -21,7 +21,7 @@ const createUser = async (name: string, email: string, password: string) => {
       },
     });
 
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '2d' });
 
     return {
       user: { id: user.id, email: user.email, name: user.name },
@@ -44,7 +44,7 @@ const signInUser = async (email: string, password: string) => {
       throw new Error('Invalid password');
     }
 
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '2d' });
 
     return {
       user: { id: user.id, email: user.email, name: user.name },

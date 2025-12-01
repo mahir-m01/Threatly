@@ -12,13 +12,19 @@ interface AuthenticatedRequest extends Request {
 }
 
 function authenticateToken(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const authHeader = req.headers['authorization'];
+  // NEW: Get token from HttpOnly cookies
+  const token = req.cookies?.token;
 
-  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  // OLD: Authorization header approach (kept for reference)
+  // const authHeader = req.headers['authorization'];
+  // if (!authHeader || !authHeader.startsWith('Bearer ')) {
+  //   return res.status(401).json({ error: "No token provided" });
+  // }
+  // const token = authHeader.split(' ')[1];
+
+  if (!token) {
     return res.status(401).json({ error: "No token provided" });
   }
-
-  const token = authHeader.split(' ')[1];
 
   jwt.verify(token, JWT_SECRET, (error, decoded) => {
     if (error) {

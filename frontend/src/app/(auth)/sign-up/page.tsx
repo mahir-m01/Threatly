@@ -18,11 +18,24 @@ const SignUpPage: FC = () => {
     const router = useRouter()
 
     useEffect(() => {
-        // If a token exists locally, redirect to dashboard.
-        const token = localStorage.getItem('token')
-        if (token) {
-            router.replace('/dashboard')
+        // if user already has valid session
+        const verifySession = async () => {
+            try {
+                const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
+                const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+                    withCredentials: true
+                })
+                if (response.data.success) {
+                    router.replace('/dashboard')
+                }
+            } catch (error) {
+                if (process.env.NODE_ENV === 'development') {
+                    console.log('Session verification failed (expected)', error)
+                }
+            }
         }
+
+        verifySession()
     }, [router])
     
     const {
@@ -38,26 +51,24 @@ const SignUpPage: FC = () => {
     const onSubmit = async (data: SignUpFormData) => {
         try {
             console.log('Attempting sign up...');
-            // Use environment variable for backend URL
             const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000';
             
             const response = await axios.post(`${apiUrl}/api/auth/sign-up`, {
                 name: data.name,
                 email: data.email,
                 password: data.password
+            }, {
+                withCredentials: true 
             })
             
             console.log('Sign up response:', response.data);
             
             if (response.data.success) {
-
-                localStorage.setItem('token', response.data.data.token)
-                
+                // Old: Manual token storage (kept for reference)
+                // localStorage.setItem('token', response.data.data.token)
                 toast.success('Account created successfully!')
-                
                 router.push('/dashboard')
             } else {
-
                 toast.error(response.data.message || 'Failed to create account')
             }
         } catch (error: any) {
@@ -66,6 +77,14 @@ const SignUpPage: FC = () => {
             const errorMessage = error.response?.data?.message || 'Failed to create account. Please try again.'
             toast.error(errorMessage)
         }
+    }
+
+    const handleGoogleSignUp = () => {
+        const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+        const redirectUri = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI || 'http://localhost:4000/api/auth/oauth/google/callback'
+        const scope = 'openid email profile'
+        const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`
+        window.location.href = googleAuthUrl
     }
 
     return (
@@ -189,6 +208,7 @@ const SignUpPage: FC = () => {
             <div className="mt-4">
                 <button
                     type="button"
+                    onClick={handleGoogleSignUp}
                     className="w-full bg-white/10 border border-white/20 text-white py-2.5 px-4 rounded-lg font-medium text-sm hover:bg-white/20 transition-all flex items-center justify-center gap-2"
                 >
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

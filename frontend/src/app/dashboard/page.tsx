@@ -30,35 +30,39 @@ export default function Page() {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const token = localStorage.getItem("token")
-
-        if (!token) {
-          toast.error("No token found. Please sign in again.")
-          router.push("/sign-in")
-          return
-        }
+        // Old: Get token from localStorage (kept for reference)
+        // const token = localStorage.getItem("token")
+        // if (!token) {
+        //   toast.error("No token found. Please sign in again.")
+        //   router.push("/sign-in")
+        //   return
+        // }
 
         const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
 
         const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+          withCredentials: true, 
           headers: {
-            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
+          // Old: Authorization header 
+          // headers: {
+          //   Authorization: `Bearer ${token}`,
+          //   "Content-Type": "application/json",
+          // },
         })
 
         if (response.data.success) {
           setUser(response.data.data)
         } else {
           toast.error("Failed to load user profile")
-          localStorage.removeItem("token") 
+          // Old: localStorage.removeItem("token") 
           router.push("/sign-in")
         }
       } catch (error: any) {
         console.error("Error fetching profile:", error)
         toast.error("Failed to load user profile")
-        // Remove token if it's invalid/expired to prevent continuous redirects
-        localStorage.removeItem("token")
+        // Old: localStorage.removeItem("token")
         router.push("/sign-in")
       } finally {
         setLoading(false)

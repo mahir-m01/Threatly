@@ -26,7 +26,19 @@ const signIn = async (req: SignInRequest, res: Response) => {
   try {
     const { email, password } = req.body;
     const result = await signInUser(email, password);
-    res.json({ success: true, data: result });
+    
+    res.cookie('token', result.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
+      path: '/'
+    });
+
+    // Old: Direct token response (kept for reference)
+    // res.json({ success: true, data: result });
+    
+    res.json({ success: true, data: { user: result.user } });
   } catch (error: any) {
     res.status(401).json({ success: false, message: error.message });
   }
@@ -36,7 +48,19 @@ const signUp = async (req: SignUpRequest, res: Response) => {
   try {
     const { name, email, password } = req.body;
     const result = await createUser(name, email, password);
-    res.status(201).json({ success: true, data: result });
+  
+    res.cookie('token', result.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
+      path: '/'
+    });
+
+    // Old: Direct token response (kept for reference)
+    // res.status(201).json({ success: true, data: result });
+    
+    res.status(201).json({ success: true, data: { user: result.user } });
   } catch (error: any) {
     res.status(400).json({ success: false, message: error.message });
   }
@@ -54,4 +78,18 @@ const getProfile = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
-export { signIn, signUp, getProfile };
+const signOut = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/'
+    });
+    res.json({ success: true, message: 'Signed out successfully' });
+  } catch (error: any) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
+export { signIn, signUp, getProfile, signOut };

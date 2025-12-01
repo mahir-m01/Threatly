@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "baseline-browser-mapping": "^2.8.32"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7"
   }
 }
