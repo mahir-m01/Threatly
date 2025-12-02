@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import clsx from "clsx";
 import { DM_Sans } from "next/font/google";
 import { Providers } from "./providers";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={clsx(dmSans.className, 'antialiased')}
       >
         <Providers>{children}</Providers>
+        <Toaster />
       </body>
     </html>
   );

@@ -57,10 +57,11 @@ const SignInPage: FC = () => {
             console.log('Sign in response:', response.data);
             
             if (response.data.success) {
-                // Old: Manual token storage (kept for reference)
-                // localStorage.setItem('token', response.data.data.token)
-                
                 toast.success('Signed in successfully!')
+                
+                // Wait a bit for cookie to be set
+                await new Promise(resolve => setTimeout(resolve, 100))
+                
                 router.push('/dashboard')
             } else {
                 toast.error(response.data.message || 'Failed to sign in')

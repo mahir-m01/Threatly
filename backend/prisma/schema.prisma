@@ -15,12 +15,73 @@ datasource db {
 }
 
 model Users {
-  id        String   @id @default(cuid())
+  id        String    @id @default(cuid())
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
-  role      String   @default("user")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  role      String    @default("user")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  projects  Projects[]
+}
+
+model Projects {
+  id          String                  @id @default(cuid())
+  name        String
+  link        String
+  description String
+  status      String                  @default("active") 
+  userId      String
+  user        Users                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+  httpScans   HttpObservatoryScan[]
+  sslScans    SSLLabsScan[]
+}
+
+model HttpObservatoryScan {
+  id           String   @id @default(cuid())
+  projectId    String
+  project      Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  grade        String
+  score        Int
+  testsPassed  Int
+  testsFailed  Int
+  detailsUrl   String?
+
+  scannedAt    DateTime @default(now())
+
+  @@index([projectId, scannedAt])
+}
+
+model SSLLabsScan {
+  id          String   @id @default(cuid())
+  projectId   String
+  project     Projects @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  grade       String
+  hasWarnings Boolean
+
+  supportsTLS13 Boolean
+  supportsTLS12 Boolean
+  supportsTLS11 Boolean
+  supportsTLS10 Boolean
+
+  certIssuer   String?
+  certExpires  DateTime?
+
+  vulnHeartbleed Boolean
+  vulnPoodle     Boolean
+  vulnFreak      Boolean
+  vulnLogjam     Boolean
+  vulnBeast      Boolean
+
+  hstsEnabled  Boolean
+
+  detailsUrl   String?
+  scannedAt    DateTime @default(now())
+
+  @@index([projectId, scannedAt])
 }
 

@@ -28,9 +28,8 @@ export const Navbar = () => {
                         )}
                     </button>
                     <nav className="items-center gap-6 hidden sm:flex">
-                        <a href="#" className="text-white/80 hover:text-white transition">About</a>
-                        <a href="#" className="text-white/80 hover:text-white transition">Features</a>
-                        <a href="#" className="text-white/80 hover:text-white transition">FAQs</a>
+                        <a href="#features" className="text-white/80 hover:text-white transition">Features</a>
+                        <a href="#faqs" className="text-white/80 hover:text-white transition">FAQs</a>
 
                         <Link href="/sign-up">
                             <button className="bg-white text-black py-2 px-4 rounded-lg font-medium cursor-pointer hover:bg-[#2167A1] hover:text-white transition-all">
@@ -63,21 +62,14 @@ export const Navbar = () => {
 
                             <nav className="flex flex-col gap-6">
                                 <a
-                                    href="#"
-                                    className="text-white text-lg hover:text-white/80 transition py-2 text-center"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    About
-                                </a>
-                                <a
-                                    href="#"
+                                    href="#features"
                                     className="text-white text-lg hover:text-white/80 transition py-2 text-center"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     Features
                                 </a>
                                 <a
-                                    href="#"
+                                    href="#faqs"
                                     className="text-white text-lg hover:text-white/80 transition py-2 text-center"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >

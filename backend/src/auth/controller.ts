@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createUser, signInUser, getUserById } from './service.js';
+import { createUser, signInUser, getUserById, updateUser } from './service.js';
 
 interface SignUpRequest extends Request {
   body: {
@@ -30,7 +30,7 @@ const signIn = async (req: SignInRequest, res: Response) => {
     res.cookie('token', result.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'none',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
       path: '/'
     });
@@ -52,7 +52,7 @@ const signUp = async (req: SignUpRequest, res: Response) => {
     res.cookie('token', result.token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'none',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
       path: '/'
     });
@@ -78,12 +78,31 @@ const getProfile = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
+const updateProfile = async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    if (!req.user?.userId) {
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+    
+    const { name, email } = req.body;
+    
+    if (!name && !email) {
+      return res.status(400).json({ success: false, message: 'Name or email is required' });
+    }
+    
+    const user = await updateUser(req.user.userId, name, email);
+    res.json({ success: true, data: user });
+  } catch (error: any) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
 const signOut = async (req: Request, res: Response) => {
   try {
     res.clearCookie('token', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'none',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       path: '/'
     });
     res.json({ success: true, message: 'Signed out successfully' });
@@ -92,4 +111,4 @@ const signOut = async (req: Request, res: Response) => {
   }
 };
 
-export { signIn, signUp, getProfile, signOut };
+export { signIn, signUp, getProfile, updateProfile, signOut };

@@ -67,4 +67,33 @@ const getUserById = async (userId: string) => {
   }
 };
 
-export { createUser, signInUser, getUserById };
+const updateUser = async (userId: string, name?: string, email?: string) => {
+  try {
+    const user = await prisma.users.findUnique({ where: { id: userId } });
+    if (!user) {
+      throw new Error('User not found');
+    }
+
+    // If email is being changed, check if it's already taken
+    if (email && email !== user.email) {
+      const existingUser = await prisma.users.findUnique({ where: { email } });
+      if (existingUser) {
+        throw new Error('Email already in use');
+      }
+    }
+
+    const updatedUser = await prisma.users.update({
+      where: { id: userId },
+      data: {
+        ...(name && { name }),
+        ...(email && { email }),
+      },
+    });
+
+    return { id: updatedUser.id, email: updatedUser.email, name: updatedUser.name };
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { createUser, signInUser, getUserById, updateUser };
