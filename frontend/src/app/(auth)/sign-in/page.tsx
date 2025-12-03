@@ -20,7 +20,7 @@ const SignInPage: FC = () => {
         const verifySession = async () => {
             try {
                 const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4000'
-                const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+                const response = await axios.get(`${apiUrl}/api/user/profile`, {
                     withCredentials: true
                 })
                 if (response.data.success) {

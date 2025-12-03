@@ -3,6 +3,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import authRoutes from './auth/route.js';
+import userRoutes from './user/route.js';
 import projectRoutes from './projects/route.js';
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.get('/api/health', (req: Request, res: Response) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/projects', projectRoutes);
 
 // For Render deployment

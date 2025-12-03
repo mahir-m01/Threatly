@@ -30,7 +30,7 @@ export default function AccountPage() {
     const fetchProfile = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
-        const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+        const response = await axios.get(`${apiUrl}/api/user/profile`, {
           withCredentials: true,
         })
 
@@ -59,7 +59,7 @@ export default function AccountPage() {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
       const response = await axios.patch(
-        `${apiUrl}/api/auth/profile`,
+        `${apiUrl}/api/user/profile`,
         formData,
         {
           withCredentials: true,

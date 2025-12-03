@@ -31,9 +31,9 @@ export default function DashboardLayout({
       try {
         const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000"
 
-        console.log('Fetching user profile from:', `${apiUrl}/api/auth/profile`)
+        console.log('Fetching user profile from:', `${apiUrl}/api/user/profile`)
         
-        const response = await axios.get(`${apiUrl}/api/auth/profile`, {
+        const response = await axios.get(`${apiUrl}/api/user/profile`, {
           withCredentials: true, 
           headers: {
             "Content-Type": "application/json",
